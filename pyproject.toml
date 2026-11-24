@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dist-train"
+version = "0.1.0"
+description = "3D Parallel (DP x TP x PP) and ZeRO/FSDP Distributed LLM Training Engine from scratch in Python and PyTorch"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "torch>=2.1.0",
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4.0"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

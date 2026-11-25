@@ -1,6 +1,6 @@
 # dist-train
 
-A Megatron-LM / DeepSpeed / PyTorch FSDP-style **3D Parallel (`DP` x `TP` x `PP`) and ZeRO Distributed LLM Training Engine** built from scratch in Python and PyTorch. Implements Ring Collectives (`AllReduce`, `ReduceScatter`, `AllGather`), Bucketed `DDP`, **ZeRO Stages 1, 2 & 3 (`FSDP`)**, Megatron `ColumnParallelLinear` / `RowParallelLinear` Tensor Parallelism, Activation Checkpointing, and **1F1B** Interleaved Pipeline Parallelism.
+A Megatron-LM / DeepSpeed / PyTorch FSDP-style 3D Parallel (`DP` x `TP` x `PP`) and ZeRO Distributed LLM Training Engine built from scratch in Python and PyTorch. Implements Ring Collectives (`AllReduce`, `ReduceScatter`, `AllGather`), Bucketed `DDP`, ZeRO Stages 1, 2 & 3 (`FSDP`), Megatron `ColumnParallelLinear` / `RowParallelLinear` Tensor Parallelism, Activation Checkpointing, and 1F1B Interleaved Pipeline Parallelism.
 
 ## 15-Day Incremental Engineering Roadmap (Month 6, Days 151–165)
 

@@ -86,17 +86,17 @@ For a model of `Psi` parameters trained across `N` workers (`2 Psi` bytes `bf16`
 
 ---
 
-## 7B-Parameter LLM Memory & Bandwidth Benchmark (`8x 80 GB GPUs`)
+## 7B-Parameter LLM Memory & Bandwidth Benchmark (`8x80GB GPUs`)
 
 Generated via `python3 -m dist_train.cli bench-memory` (`Psi = 7B`, `L = 32`, `D = 4096`, `T = 2048`, `micro_batch = 2`, activation checkpointing enabled):
 
 | Strategy (`World = 8`) | Weights | Gradients | `AdamW` States | Activations | Total VRAM / GPU | Comm / Step | Fits `80 GB` H100? |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: | :--- |
-| **`DDP (DP=8)`** | 13.04 GB | 13.04 GB | 78.23 GB | 1.00 GB | **105.31 GB** | 22.82 GB | **OOM (> 80 GB)** |
-| **`ZeRO-1 (DP=8)`** | 13.04 GB | 13.04 GB | 9.78 GB | 1.00 GB | **36.86 GB** | 22.82 GB | **YES (2.86x cut)** |
-| **`ZeRO-2 (DP=8)`** | 13.04 GB | 1.63 GB | 9.78 GB | 1.00 GB | **25.45 GB** | 22.82 GB | **YES (4.14x cut)** |
-| **`FSDP / ZeRO-3 (DP=8)`** | 2.04 GB | 2.04 GB | 9.78 GB | 1.00 GB | **14.85 GB** | 34.23 GB | **YES (7.09x cut)** |
-| **`3D (DP=2, PP=2, TP=2)`** | 3.26 GB | 3.26 GB | 9.78 GB | 0.50 GB | **16.80 GB** | 5.31 GB | **YES (6.27x cut)** |
+| **`DDP (DP=8)`** | 13.04 GB | 13.04 GB | 78.23 GB | 1.00 GB | 105.31 GB | 22.82 GB | OOM (> 80 GB) |
+| **`ZeRO-1 (DP=8)`** | 13.04 GB | 13.04 GB | 9.78 GB | 1.00 GB | 36.86 GB | 22.82 GB | YES (2.86x cut) |
+| **`ZeRO-2 (DP=8)`** | 13.04 GB | 1.63 GB | 9.78 GB | 1.00 GB | 25.45 GB | 22.82 GB | YES (4.14x cut) |
+| **`FSDP / ZeRO-3 (DP=8)`** | 2.04 GB | 2.04 GB | 9.78 GB | 1.00 GB | 14.85 GB | 34.23 GB | YES (7.09x cut) |
+| **`3D (DP=2, PP=2, TP=2)`** | 3.26 GB | 3.26 GB | 9.78 GB | 0.50 GB | 16.80 GB | 5.31 GB | YES (6.27x cut) |
 
 ---
 

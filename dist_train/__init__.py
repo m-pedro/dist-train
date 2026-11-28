@@ -7,6 +7,7 @@ from dist_train.collectives import (
     spawn_gloo_workers,
 )
 from dist_train.ddp import BucketedDDPTrainer
+from dist_train.engine_3d import Parallel3DTrainer, Step3DMetrics
 from dist_train.fsdp import FSDPShardedUnit, FSDPTrainer
 from dist_train.mesh import DeviceMesh3D, ParallelCoordinates
 from dist_train.pipeline import P2PChannelStats, PipelineStage, partition_layers_into_stages
@@ -15,6 +16,11 @@ from dist_train.pipeline_schedule import (
     run_1f1b_step,
     run_gpipe_step,
     theoretical_pipeline_bubble_fraction,
+)
+from dist_train.profiler import (
+    ClusterMemoryProfile,
+    compare_7b_cluster_strategies,
+    estimate_strategy_profile,
 )
 from dist_train.tensor_parallel import (
     ColumnParallelLinear,
@@ -31,21 +37,26 @@ from dist_train.zero import ZeROShardedTrainer
 __all__ = [
     "BucketedDDPTrainer",
     "CheckpointedSequential",
+    "ClusterMemoryProfile",
     "ColumnParallelLinear",
     "DeviceMesh3D",
     "FSDPShardedUnit",
     "FSDPTrainer",
     "InMemoryGroup",
     "P2PChannelStats",
+    "Parallel3DTrainer",
     "ParallelCoordinates",
     "PipelineStage",
     "PipelineStepReport",
     "ReferenceTransformerBlock",
     "RowParallelLinear",
+    "Step3DMetrics",
     "TensorParallelTransformerBlock",
     "ZeROShardedTrainer",
     "checkpoint_segment",
+    "compare_7b_cluster_strategies",
     "copy_to_tp_region",
+    "estimate_strategy_profile",
     "partition_layers_into_stages",
     "reduce_from_tp_region",
     "ring_all_gather",
